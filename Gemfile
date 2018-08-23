@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~>3.3.7'
 gem 'bootstrap_form'
 
 #editor
+gem 'rails_db'
 gem 'tinymce-rails'
 
 # 회원가입 기능
@@ -54,7 +55,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'rails_db'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
