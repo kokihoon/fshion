@@ -25,11 +25,11 @@
       <hr>
       <div id="content">
         <div>
-          <p><b><%=@travel[i].one-1%>박 <%=@travel[i].one%>일</b>동안</p>
+          <p><b><%=@travel[i].one.to_i -1%>박 <%=@travel[i].one%>일</b>동안</p>
           <p><b>부산광역시</b>에서</p>
         </div>
 
-        <% for j in 0..@travel[i].one-1 %>
+        <% for j in 0..@travel[i].one.to_i-1 %>
           <div id="plan">
             <span id="circle">
               <p>Day <%= j+1 %></p>

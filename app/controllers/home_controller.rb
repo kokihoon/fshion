@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new]
 
   def my_page
     @travel = Travel.where(user: current_user);

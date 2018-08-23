@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "home#my_page"
+  root "home#new"
   resources :notes
 
   get '/home/my_page' => 'home#my_page'
