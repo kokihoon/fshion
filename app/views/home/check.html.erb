@@ -152,12 +152,12 @@
             }
         }
     }
-    function Dist(lat1, lon1, lat2, lon2) {
+    function Dist(lat1, lat2, lon2, lon1) {
         var p = 0.017453292519943295;    // Math.PI / 180
         var c = Math.cos;
         var a = 0.5 - c((parseFloat(lat2).toFixed(14) - parseFloat(lat1).toFixed(14)) * p)/2 +
-            c(parseFloat(lat1).toFixed(14) * p) * c(parseFloat(lat2).toFixed(14)  * p) *
-            (1 - c((parseFloat(lon2).toFixed(14)  - parseFloat(lon1).toFixed(14))  * p))/2;
-        return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+        c(parseFloat(lat1).toFixed(14) * p) * c(parseFloat(lat2).toFixed(14) * p) *
+        (1 - c((parseFloat(lon2).toFixed(14) - parseFloat(lon1).toFixed(14)) * p)) / 2;
+        return 12742000 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
     }
 </script>
