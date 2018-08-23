@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag    'detailed_content', media: 'all', 'data-turbolinks-track' => true %>
+
+<script type="text/javascript">
+    function show() {
+        window.history.back();
+    }
+</script>
+<h2><%=@q.name%></h2>
+<div class="info_box">
+
+  <!--  <img src="감천문화마을.jpg" alt="감천문화마을">-->
+  <div id="info">
+    <p>
+      <%=@q.contents%>
+    </p>
+  </div>
+  <input type="button" onclick="show()" value="확인">
+</div>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day1: MyString
+  day2: MyString
+  day3: MyString
+  day4: MyString
+  day5: MyString
+  day6: MyString
+  day7: MyString
+  day8: MyString
+  user: one
+
+two:
+  day1: MyString
+  day2: MyString
+  day3: MyString
+  day4: MyString
+  day5: MyString
+  day6: MyString
+  day7: MyString
+  day8: MyString
+  user: two

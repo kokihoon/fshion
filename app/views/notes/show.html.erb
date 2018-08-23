@@ -1,0 +1,21 @@
+<h1><%=@note.title%></h1>
+<hr>
+<h2>by <%=@note.user.email%></h2>
+<% if @note.user == current_user%>
+  <%=link_to '수정하기', edit_note_path%>
+  <%=link_to '삭제하기', note_path, method: 'delete'%>
+<% end %>
+<hr>
+
+<%=@note.content.html_safe%>
+<hr>
+
+<div class="well">
+  댓글 작성 창
+  <%#TODO : 댓글 창 완성하기%>
+</div>
+<hr />
+<div>
+  댓글 나오는 곳
+  <%#TODO : 댓글 창 보여주기%>
+</div>

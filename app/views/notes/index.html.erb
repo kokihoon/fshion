@@ -1,0 +1,22 @@
+<h1>전체 글 목록</h1>
+<div class="table-responsive">
+  <table class="table table-fit">
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>user</th>
+        <th>comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @note.each do |note| %>
+        <tr>
+          <td><%=link_to(note.title, note_path(note.id))%></td>
+          <td><%=note.user.email%></td>
+          <td>100</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to '글 작성', new_note_path %>
+</div>

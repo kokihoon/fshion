@@ -1,0 +1,54 @@
+<%= stylesheet_link_tag    'my_page', media: 'all', 'data-turbolinks-track' => true %>
+<div class="account_box">
+<!--  <img src="back7.gif" alt="my picture">-->
+  <div class="account">
+    <p>이름  : <%= current_user.name%></p>
+    <p>이메일 : <%= current_user.email%></p>
+<!--    <div>-->
+<!--      <input type="button" value="사진 변경">-->
+<!--      <input type="button" value="비밀번호 변경">-->
+<!--    </div>-->
+  </div>
+</div>
+
+<div class="new">
+  <input type="button" value="새 여행 일정 만들기" onclick="window.location.href = '/home/new';">
+</div>
+<div class="flex-container">
+<% for i in 0..@count-1 %>
+    <div class="item">
+  <div class="save_box">
+    <div class="card">
+      <div id="title">
+        <p>친구랑 <%= @travel[i].position%> 여행</p>
+      </div>
+      <hr>
+      <div id="content">
+        <div>
+          <p><b><%=@travel[i].one-1%>박 <%=@travel[i].one%>일</b>동안</p>
+          <p><b>부산광역시</b>에서</p>
+        </div>
+
+        <% for j in 0..@travel[i].one-1 %>
+          <div id="plan">
+            <span id="circle">
+              <p>Day <%= j+1 %></p>
+            </span>
+            <span id="detail">
+              <p><%= @hashdata[i][j] %></p>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+
+      <div id="manage">
+        <input type="button" value="전체보기">
+        <input type="button" value="수정">
+        <input type="button" value="삭제" onclick="alert('일정을 삭제하면 복구가 불가능 합니다.\n삭제하시겠습니까?')">
+      </div>
+    </div>
+  </div>
+    </div>
+<% end %>
+</div>

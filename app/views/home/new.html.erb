@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true %>
+<div class="ask">
+  <h2 style="font-family: DoHyeon;"> 어디를 여행할까요?</h2>
+</div>
+
+<div id="select_box">
+  <div class="date">
+    <form class="" action="/home/hotel">
+     <span class="start" style="font-family: Nanum Gothic; font-size: 15px; ">
+       <input type="number" name="days" min=1 max=7 value=1 placeholder="날짜선택" style="font-family: Nanum Gothic;" />
+       <b> 박</b>
+     </span>
+      <span class="start" style="font-family: Nanum Gothic; font-size: 15px;">
+        <input type="number" name="one" min=1 max=8 value=2 placeholder="날짜선택" style="font-family: Nanum Gothic;" />
+        <b> 일</b>
+      </span>
+      <select name="position" class="start" style="font-family: Nanum Gothic; font-size: 15px;">
+        <option value="부산광역시" name="busan">부산광역시</option>
+        <option value="서울특별시" name="seoul">서울특별시</option>
+      </select> <b>를(을)</b>
+      <input type = "submit" value="여행하기" style="font-family: Nanum Gothic; font-weight: bold;" />
+    </form>
+  </div>
+</div>
+
+<!--<h1>새로운 여행</h1>-->
+<!--<img>-->
+<!--<form class="" action="/home/hotel">-->
+<!--  <input type="number" name="days" min="1" max="5" value="1">-->
+<!--  박-->
+<!--  <input type="number" name="one" min="1" max="10" value="2">-->
+<!--  일 동안<br>-->
+<!--  <select name="position">-->
+<!--    <option value="부산광역시" name="busan">부산광역시</option>-->
+<!--    <option value="서울특별시" name="seoul">서울특별시</option>-->
+<!--  </select> 를(을) <button type="submit" value="go">여행하기</button>-->
+<!--</form>-->
+

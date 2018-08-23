@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+#header{
+    height:100px;
+    display:flex;
+    flex-direction: column;
+    line-height: 10px;
+    justify-content:left;
+    margin-top:1%;
+    margin-left:3%;
+    align-items:left;
+    color:rgb(255, 255, 255);
+}
+
+
+h2{
+    text-align: center;
+    color:white;
+    margin-top:5%;
+}
+
+p
+{
+    /* margin-top:1.5%; */
+    margin-bottom:0;
+    /* margin-left: 2%; */
+}
+
+body{
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100%;
+    background: url('hotel_main.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+    overflow: auto;
+}
+
+#select_box
+{
+    justify-content:center;
+    position: center;
+    /* margin-top: 10%; */
+    /* margin-left: 5%; */
+    margin: 7% auto;
+    height: 120px;
+    width:450px;
+    /* background: #fff; */
+    color:rgba(37, 37, 37, 0.5);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+#date{
+    height:80px;
+    width: 150px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    position: center;
+    color: rgb(82, 82, 82);
+    /* box-sizing: border-box; */
+    text-align: center;
+    /* padding: 40px; */
+    width: 150px;
+    /* height: 400px; */
+}
+
+
+input[type="submit"]
+{
+    /* align-items: center; 내가 추가한 거임ㅋㅋ */
+    /* position:center; */
+    margin-top: 40px;
+    margin-bottom: 28px;
+    width: 100px;
+    height: 28px;
+    background: hsl(0, 0%, 100%);
+    border: none;
+    border-radius: 2px;
+    color: rgb(110, 110, 110);
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.2s ease;
+    cursor: pointer;
+}

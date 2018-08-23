@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag    'hotel', media: 'all', 'data-turbolinks-track' => true %>
+<div class="hotel">
+
+<!--  <div class="section">-->
+<!--    <div id="header" class="container">-->
+<!--      <p style = "font-family: Nanum Gothic;"> 당신의 여행을 디자인합니다.</p>-->
+<!--      <h1 style = "font-family: Jua;"><b>TRAVEL + PLAN</b></h1>-->
+<!--    </div>-->
+<!--  </div>-->
+  <!--<h1><%#=@days %>박 <%#= @one%>일 동안 <%#=@position %> 에서</h1>-->
+
+  <div class="ask">
+    <h2 style="font-family: DoHyeon;"> 출발지와 도착지를 입력해 주세요.</h2>
+  </div>
+  <form action="/home/attract">
+    <input type="hidden" value=<%= @days %> name="days">
+    <input type="hidden" value=<%= @one %> name="one">
+    <input type="hidden" value=<%= @position %> name="position">
+    <% for i in 0..@days.to_i %>
+      <div class="select_box">
+        <div class="day">
+          <div>
+            <span id="circle"> <p>Day <%= i+1%></p> </span>
+            <span id="depart">
+                                    <input type="text" placeholder="출발장소" name="start[]">
+                                </span>
+            <span id="arrow">
+                                    <i class="right"></i>
+                                </span>
+            <span id="arrive">
+                                    <input type="text" placeholder="도착장소" name="end[]">
+                                </span>
+          </div>
+        </div>
+    <% end %>
+      <div class="button">
+        <span class="back">
+            <input type="button" onclick="window.location.href = '/home/new';" value="이전" />
+        </span>
+        <span id="next_button">
+            <input type="submit" value="다음">
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+

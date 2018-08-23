@@ -1,0 +1,153 @@
+<%= stylesheet_link_tag    'attract', media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="ask">
+  <h2 style="font-family: DoHyeon;"> 여행하고 싶은 장소를 선택해 주세요!</h2>
+  <h4>장소 이름을 클릭하면 자세한 정보를 볼 수 있습니다.</h4>
+  <!-- 각각의 Landmark detail로 링크 연결하기 -->
+</div>
+
+<form action="/home/check">
+  <input type="hidden" name="days" value=<%= @days %> >
+  <input type="hidden" name="one" value=<%= @one %>  >
+  <input type="hidden" name="position" value=<%= @position %>>
+
+  <% @start.each do |d| %>
+    <input type="hidden" name="start[]" value= "<%= d %>">
+  <% end %>
+
+  <% @end.each do |d| %>
+    <input type="hidden" name="end[]" value="<%= d %>">
+  <% end %>
+
+  <div class="select_box">
+    <div id="landmark_flters">
+      <ul>
+        <li><a class="filter active" data-filter=".landmark_busan">전체</a></li>
+        <li><a class="filter" data-filter=".ㄱ">ㄱ</a></li>
+        <li><a class="filter" data-filter=".ㄴ">ㄴ</a></li>
+        <li><a class="filter" data-filter=".ㄷ">ㄷ</a></li>
+        <li><a class="filter" data-filter=".ㄹ">ㄹ</a></li>
+        <li><a class="filter" data-filter=".ㅁ">ㅁ</a></li>
+        <li><a class="filter" data-filter=".ㅂ">ㅂ</a></li>
+        <li><a class="filter" data-filter=".ㅅ">ㅅ</a></li>
+        <li><a class="filter" data-filter=".ㅇ">ㅇ</a></li>
+        <li><a class="filter" data-filter=".ㅈ">ㅈ</a></li>
+        <li><a class="filter" data-filter=".ㅊ">ㅊ</a></li>
+        <li><a class="filter" data-filter=".ㅋ">ㅋ</a></li>
+        <li><a class="filter" data-filter=".ㅌ">ㅌ</a></li>
+        <li><a class="filter" data-filter=".ㅍ">ㅍ</a></li>
+        <li><a class="filter" data-filter=".ㅎ">ㅎ</a></li>
+      </ul>
+    </div>
+    <div id="landmark_wrapper">
+
+        <% @position1.each do |p| %>
+          <div class="ㄱ landmark_busan">
+        <input type="checkbox"  name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name%></a>
+          </div>
+        <% end %>
+
+      <% @position2.each do |p| %>
+        <div class="ㄴ landmark_busan">
+          <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+        </div>
+      <% end %>
+
+    <% @position3.each do |p| %>
+      <div class="ㄷ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name%></a>
+      </div>
+    <% end %>
+
+    <% @position4.each do |p| %>
+      <div class="ㄹ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position5.each do |p| %>
+      <div class="ㅁ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position6.each do |p| %>
+      <div class="ㅂ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position7.each do |p| %>
+      <div class="ㅅ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name%></a>
+      </div>
+    <% end %>
+
+    <% @position8.each do |p| %>
+      <div class="ㅇ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position9.each do |p| %>
+      <div class="ㅈ landmark_busan">
+        <input type="checkbox" name="test[]"  value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position10.each do |p| %>
+      <div class="ㅊ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position11.each do |p| %>
+      <div class="ㅋ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position12.each do |p| %>
+      <div class="ㅌ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position13.each do |p| %>
+      <div class="ㅍ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    <% @position14.each do |p| %>
+      <div class="ㅎ landmark_busan">
+        <input type="checkbox" name="test[]" value="<%= p.name %>"><a class="landmark_title" href="/home/detailed_content/<%= p.value %>"><%= p.name %></a>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="button">
+      <div id="back_button">
+        <input type="button" value="이전" onclick="Back()">
+      </div>
+
+      <div id="next_button">
+        <input type="submit" value="다음">
+      </div>
+    </div>
+  </div>
+</form>
+<script>
+
+    // ㄱㄴㄷ 필터링
+
+    (function($) {
+        $("#landmark_flters li a").click(function() {
+            $("#landmark_flters li a").removeClass('active');
+            $(this).addClass('active');
+
+            var selectedFilter = $(this).data("filter");
+
+            $(".landmark_busan").fadeOut();
+
+            setTimeout(function() {
+                $(selectedFilter).slideDown();
+            }, 300);
+        });
+    })(jQuery);
+
+    function Back() {
+        window.history.back();
+    }
+</script>
