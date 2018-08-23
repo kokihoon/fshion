@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @travel = Travel.where(user: current_user);
     @count = @travel.count
     @hashdata = Array.new
-
+    
     for i in 0..@count-1
       data = Array.new
       data[0] = @travel[i].day1
@@ -16,7 +16,7 @@ class HomeController < ApplicationController
       data[5] = @travel[i].day6
       data[6] = @travel[i].day7
       data[7] = @travel[i].day8
-
+    
       @hashdata[i] = data
     end
 
@@ -37,6 +37,7 @@ class HomeController < ApplicationController
     @travel.day8 = test[7]
     @travel.user = current_user
     @travel.position = params[:position]
+    @travel.one = params[:one]
     @travel.save
     redirect_to '/home/new'
   end

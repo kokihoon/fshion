@@ -5,7 +5,9 @@
 
 <div id="select_box">
   <div class="date">
-    <form class="" action="/home/hotel">
+    <form class="" action="/home/hotel" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
      <span class="start" style="font-family: Nanum Gothic; font-size: 15px; ">
        <input type="number" name="days" min=1 max=7 value=1 placeholder="날짜선택" style="font-family: Nanum Gothic;" />
        <b> 박</b>

@@ -12,7 +12,9 @@
   <div class="ask">
     <h2 style="font-family: DoHyeon;"> 출발지와 도착지를 입력해 주세요.</h2>
   </div>
-  <form action="/home/attract">
+  <form action="/home/attract" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
     <input type="hidden" value=<%= @days %> name="days">
     <input type="hidden" value=<%= @one %> name="one">
     <input type="hidden" value=<%= @position %> name="position">

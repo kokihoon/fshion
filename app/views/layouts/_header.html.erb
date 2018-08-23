@@ -10,6 +10,7 @@
         <li><%=link_to '게시판', notes_path %></li>
         <% if user_signed_in? %>
           <%= current_user.email %>
+          <li><%=link_to '나의 일정', home_my_page_path, method: :post %></li>
           <li><%=link_to '로그아웃', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to '회원가입', new_user_registration_path %></li>
