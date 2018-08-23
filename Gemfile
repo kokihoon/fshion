@@ -17,6 +17,7 @@ gem 'tinymce-rails'
 # 회원가입 기능
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
 # # Use sqlite3 as the database for Active Record
