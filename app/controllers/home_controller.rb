@@ -37,7 +37,6 @@ class HomeController < ApplicationController
     @travel.day8 = test[7]
     @travel.user = current_user
     @travel.position = params[:position]
-    @travel.one = params[:one]
     @travel.save
     redirect_to '/home/new'
   end

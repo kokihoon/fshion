@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/home/new' => 'home#new'
   post '/home/new' =>  'home#new'
   get '/home/hotel' => 'home#hotel'
+  get '/home/my_page' => 'home#my_page'
 
   get '/home/attract' => 'home#attract'
   post '/home/attract' => 'home#attract'

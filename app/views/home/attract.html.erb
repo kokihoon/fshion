@@ -6,8 +6,7 @@
   <!-- 각각의 Landmark detail로 링크 연결하기 -->
 </div>
 
-<form action="/home/check", method="post">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<form action="/home/check">
   <input type="hidden" name="days" value=<%= @days %> >
   <input type="hidden" name="one" value=<%= @one %>  >
   <input type="hidden" name="position" value=<%= @position %>>
@@ -124,30 +123,24 @@
       </div>
 
       <div id="next_button">
-        <input type="submit" value="다음">
+        <input type="submit" value="다음" onclick="alert('선택하신 장소가 맞나요?\n\n' + getCheckedCheckboxesFor())">
       </div>
     </div>
   </div>
 </form>
 <script>
-
     // ㄱㄴㄷ 필터링
-
     (function($) {
         $("#landmark_flters li a").click(function() {
             $("#landmark_flters li a").removeClass('active');
             $(this).addClass('active');
-
             var selectedFilter = $(this).data("filter");
-
             $(".landmark_busan").fadeOut();
-
             setTimeout(function() {
                 $(selectedFilter).slideDown();
             }, 300);
         });
     })(jQuery);
-
     function Back() {
         window.history.back();
     }
