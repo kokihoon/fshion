@@ -1,14 +1,17 @@
+<%= stylesheet_link_tag    'notes_show', media: 'all', 'data-turbolinks-track' => true %>
+
 <h1><%=@note.title%></h1>
 <hr>
-<h2>by <%=@note.user.email%></h2>
-<% if @note.user == current_user%>
-  <%=link_to '수정하기', edit_note_path%>
-  <%=link_to '삭제하기', note_path, method: 'delete'%>
-<% end %>
+<h4>작성자 : <%=@note.user.email%></h4>
 <hr>
 
-<%=@note.content.html_safe%>
+<p><%=@note.content.html_safe%></p>
 <hr>
+
+<% if @note.user == current_user%>
+  <%=link_to '수정하기', edit_note_path, class: "btn btn-inverse test"%>
+  <%=link_to '삭제하기', note_path, method: 'delete', class: "btn btn-inverse test"%>
+<% end %>
 
 <!--<div class="well">-->
 <!--  댓글 작성 창-->
@@ -19,3 +22,21 @@
 <!--  댓글 나오는 곳-->
   <%#TODO : 댓글 창 보여주기%>
 <!--</div>-->
+
+<style>
+  .test {
+    margin: 20px;
+    width: 70px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 2px;
+    color: rgba(225, 225, 225, 0.9);
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.2s ease;
+    cursor: pointer;
+    font-family: "Nanum Gothic";
+    float: right;
+}
+</style>

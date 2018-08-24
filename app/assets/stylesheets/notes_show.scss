@@ -1,0 +1,35 @@
+body{
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100%;
+    background: asset_url('hotel_main.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+    overflow: auto;
+}
+
+h1{
+    text-align: center;
+    color:white;
+    margin-top:3%;
+}
+
+h4{
+    text-align: right;
+    margin-top:3%;
+}
+h2{
+    text-align: center;
+    color:white;
+    margin-top:3%;
+}
+
+p
+{
+    margin-bottom:0;
+}
+
+

@@ -8,6 +8,9 @@ Rails.application.config.assets.precompile += %w( attract.css )
 Rails.application.config.assets.precompile += %w( detailed_content.css )
 Rails.application.config.assets.precompile += %w( check.css )
 Rails.application.config.assets.precompile += %w( my_page.css )
+Rails.application.config.assets.precompile += %w( notes.css )
+Rails.application.config.assets.precompile += %w( notes_new.css )
+Rails.application.config.assets.precompile += %w( notes_show.css )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
