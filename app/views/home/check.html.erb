@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag    'check', media: 'all', 'data-turbolinks-track' => true %>
 <% require 'json' %>
 <input type="hidden" name="test" value="<%=raw @tra.to_json %>" />
+<input type="hidden" name="one" value="<%=@one %>"/>
 <!--<p style="margin-top:-12px">-->
 <!--  <em class="link">-->
 <!--    <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">-->
@@ -10,12 +11,12 @@
 <div class="result_box">
   <div class="left_box">
     <div class="day">
-      <% for i in 0..@days.to_i%>
+      <% for i in 0..@one.to_i-1%>
           <div class="up_down_button">
             <input type="button" value="▲">
             <input type="button" value="▼">
           </div>
-          <span id="circle"> <p>Day <%=i+1%></p> </span>
+          <span id="circle" style="background-color:<%=@color[i] %>; Opacity: 0.4;"> <p>Day <%=i+1%></p> </span>
         <div id="detail">
           <% for j in 0..@tra[i].length-2 %>
             <p><%=@tra[i][j]%></p>
@@ -31,13 +32,23 @@
   </div>
   <div class="right_box" id="map"></div>
   <div id="save_button">
-    <input type="button" value="저장">
+    <form  id="submitForm" action="/home/index" method="post">
+      <input type="hidden" name="one" value=<%= @one %>  >
+      <input type="hidden" name="position" value=<%= @position %>>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="button" value="저장" onclick="submit1()">
+    </form>
   </div>
 </div>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5d9a825d16808d54e3fd7145a1f4335&libraries=services"></script>
 <script>
-    var test = <%=raw @tra.to_json %>;
-    var circles = []
+    var color = ['#FF0000', '#FF8000', '#FFFF00','#00FF00', '#0000FF', '#FE2EF7', '#B40486']
+    test = <%=raw @tra.to_json %>;
+    var color_count = 0;
+    console.log('==================================')
+    console.log(test)
+    console.log('==================================')
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -49,6 +60,7 @@
     var count = 0;
     // 지도를 생성합니다
     var map = new daum.maps.Map(mapContainer, mapOption);
+
     var getCentroid = function (coord)
     {
         var center = coord.reduce(function (x,y) {
@@ -58,45 +70,68 @@
     }
     // 주소-좌표 변환 객체를 생성합니다
     var ps = new daum.maps.services.Places();
+
      for(var i = 0; i < test.length; i++){
         for (var j = 1; j < test[i].length-1; j++) {
+            console.log(test[i][j])
             macker(test[i][j], test[i].length-2);
         }
          lat = 0;
          lng = 0;
          count = 0;
      }
+
+    function submit1() {
+        var theForm = document.getElementById('submitForm');
+
+        <% for i in 0..@one.to_i-1 %>
+            theForm.innerHTML += "<input type='hidden' name='values[]' value='" + test[<%=raw i %>] + "'>";
+        <% end %>
+        theForm.submit();
+    }
+
+
+
     function macker(string, plan_length){
         ps.keywordSearch(string, placesSearchCB);
-        // ps.keywordSearch(string, function(result, status) {
         function placesSearchCB(data, status, pagination){
             console.log(status)
             // 정상적으로 검색이 완료됐으면
             if (status === daum.maps.services.Status.OK) {
-                var cood = [parseFloat(data[0].y), parseFloat(data[0].x)]
-                coord.push(cood)
-                console.log(coord)
+                var cood = [parseFloat(data[0].y), parseFloat(data[0].x)];
+                coord.push(cood);
+                console.log(coord);
                 var coords = new daum.maps.LatLng(parseFloat(data[0].y), parseFloat(data[0].x));
-                lat += parseFloat(data[0].y);
-                lng += parseFloat(data[0].x);
+
                 count ++;
                 if(count == plan_length){
-                    var circle_lat = lat/plan_length;
-                    var circle_lng = lng/plan_length
                     var test = getCentroid(coord);
-                    coord = []
-                    var circle_distance = getDistance(circle_lat,data[0].y,circle_lng,data[0].x);
-                    console.log( parseFloat(test[0]) , parseFloat(test[1]))
+                    coord = [];
+                    // var  Length = new daum.maps.Polyline({
+                    //     path: [parseFloat(data[0].y), parseFloat(data[0].x)]
+                    // });
+                    // var moveLine = new daum.maps.Polyline({
+                    //     path: [parseFloat(test[0]), parseFloat(test[1])]
+                    // });
+                    // console.log('===============================')
+                    //  console.log(typeof(moveLine.getLength()))
+                    // console.log('===============================')
+                    // var distance = Math.round(Length.getLength() + moveLine.getLength())
+
+                    var circle_distance = Dist(parseFloat(test[0]).toFixed(14),data[0].y,parseFloat(test[1]).toFixed(14),data[0].x);
+
                     var circle = new daum.maps.Circle({
                         center : new daum.maps.LatLng(parseFloat(test[0]).toFixed(14) , parseFloat(test[1]).toFixed(14)),  // 원의 중심좌표 입니다
                         radius: circle_distance, // 미터 단위의 원의 반지름입니다
                         strokeWeight: 1, // 선의 두께입니다
-                        strokeColor: '#75B8FA', // 선의 색깔입니다
+                        strokeColor: color[color_count], // 선의 색깔입니다
                         strokeOpacity: 0.5, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                         strokeStyle: 'dashed', // 선의 스타일 입니다
-                        fillColor: '#CFE7FF', // 채우기 색깔입니다
-                        fillOpacity: 0.6  // 채우기 불투명도 입니다
+                        fillColor: color[color_count++], // 채우기 색깔입니다
+                        fillOpacity: 0.2 , // 채우기 불투명도 입니다
+
                     });
+
                     // 지도에 원을 표시합니다
                     circle.setMap(map);
                     lat = 0;
@@ -106,8 +141,9 @@
                 // 결과값으로 받은 위치를 마커로 표시합니다
                 var marker = new daum.maps.Marker({
                     map: map,
-                    position: coords
+                    position: coords,
                 });
+
                 // 인포윈도우로 장소에 대한 설명을 표시합니다
                 var infowindow = new daum.maps.InfoWindow({
                     content: string
@@ -118,16 +154,12 @@
             }
         }
     }
-    function getDistance(lat1,lng1,lat2,lng2) {
-        function deg2rad(deg) {
-            return deg * (Math.PI/180)
-        }
-        var R = 3000; // Radius of the earth in km
-        var dLat = deg2rad(lat2-lat1);  // deg2rad below
-        var dLon = deg2rad(lng2-lng1);
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        var d = R * c; // Distance in km
-        return d;
+    function Dist(lat1, lat2, lon2, lon1) {
+        var p = 0.017453292519943295;    // Math.PI / 180
+        var c = Math.cos;
+        var a = 0.5 - c((parseFloat(lat2).toFixed(14) - parseFloat(lat1).toFixed(14)) * p)/2 +
+        c(parseFloat(lat1).toFixed(14) * p) * c(parseFloat(lat2).toFixed(14) * p) *
+        (1 - c((parseFloat(lon2).toFixed(14) - parseFloat(lon1).toFixed(14)) * p)) / 2;
+        return 12742000 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
     }
 </script>

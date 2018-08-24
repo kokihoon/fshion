@@ -5,7 +5,8 @@ class HomeController < ApplicationController
     @travel = Travel.where(user: current_user);
     @count = @travel.count
     @hashdata = Array.new
-    
+    @position = Array.new
+    @one = Array.new
     for i in 0..@count-1
       data = Array.new
       data[0] = @travel[i].day1
@@ -16,10 +17,11 @@ class HomeController < ApplicationController
       data[5] = @travel[i].day6
       data[6] = @travel[i].day7
       data[7] = @travel[i].day8
-    
+      @position[i] = @travel[i].position
+      @one[i] = @travel[i].one
       @hashdata[i] = data
     end
-
+    
     puts @hashdata
   end
 

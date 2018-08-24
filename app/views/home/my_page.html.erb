@@ -17,22 +17,22 @@
 </div>
 
 <div class="save_box">
-    <% for i in 0..@travel.count %>
+    <% for i in 0..(@travel.count.to_i) -1 %>
         <div class="card">
             <div id="title">
-                <p>친구랑 <%= @travel[i].position %>여행</p> 
+                <p>친구랑 <%= @position[i] %>여행</p> 
             </div>
             <hr>
             <div id="content">
                 <div>
-                    <p><b><%= (@travel[i].one.to_i) -1%>박 <%= @travel[i].one %>일</b>동안</p>
-                    <p><b><%= @travel[i].position %></b>에서</p>
+                    <p><b><%= (@one[i].to_i)-1%>박 <%= @one[i] %>일</b>동안</p>
+                    <p><b><%= @position[i] %></b>에서</p>
                 </div>
-                <% for j in 0..(@travel[i].one.to_i) -1 %>
+                <% for j in 0..(@one[i].to_i)-1%>
                     <div id="plan">
                         <span id="circle"> <p>Day <%= j+1 %></p> </span>
                         <span id="detail">
-                            <p><%= @hashdata[i][j] %></p>
+                         <p><%= @hashdata[i][j] %></p>
                         </span>
                     </div>
                 <% end %>
