@@ -20,33 +20,34 @@
     <% for i in 0..(@travel.count.to_i) -1 %>
         <div class="card">
             <div id="title">
-                <p>친구랑 <%= @position[i] %>여행</p> 
+                <p>친구랑 <%= @position[i] %> 여행</p> 
             </div>
             <hr>
             <div id="content">
-                <div>
-                    <p><b><%= (@one[i].to_i)-1%>박 <%= @one[i] %>일</b>동안</p>
+                <div id="date_box">
+                    <p><b><%= (@one[i].to_i)-1%>박 <%= @one[i].to_i %>일</b>동안</p>
                     <p><b><%= @position[i] %></b>에서</p>
                 </div>
-                <% for j in 0..(@one[i].to_i)-1%>
-                    <div id="plan">
-                        <span id="circle"> <p>Day <%= j+1 %></p> </span>
-                        <span id="detail">
-                         <p><%= @hashdata[i][j] %></p>
-                        </span>
-                    </div>
-                <% end %>
+                <div id="plan_box">
+                    <% for j in 0..(@one[i].to_i)-1%>
+                        <div id="plan">
+                            <span id="circle"> <p style="font-size:13px;">Day <%= j+1 %></p> </span>
+                            <span id="detail">
+                             <p><%= @hashdata[i][j] %></p>
+                            </span>
+                        </div>
+                    <% end %>
+                </div>
             </div>
-            <hr>
-            <div id="manage">
-                <input type="button" value="전체보기">
-                <input type="button" value="수정">
-                <input type="button" value="삭제" onclick="alert('일정을 삭제하면 복구가 불가능 합니다.\n삭제하시겠습니까?')">
-            </div>
+            <!--<div id="manage">-->
+            <!--    <input type="button" value="전체보기">-->
+            <!--    <input type="button" value="수정">-->
+            <!--    <input type="button" value="삭제" onclick="alert('일정을 삭제하면 복구가 불가능 합니다.\n삭제하시겠습니까?')">-->
+            <!--</div>-->
         </div>
     <% end %>
 </div>
 
 <div id="withdraw">
-    <input type="button" value="탈퇴하기">
+    <input type="button" value="탈퇴하기" onclick="alert('탈퇴하면 모든 데이터가 지워지고 복구가 불가능 합니다.\n탈퇴하시겠습니까?')">
 </div>

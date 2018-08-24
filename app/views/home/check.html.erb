@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag    'check', media: 'all', 'data-turbolinks-track' => true %>
 <% require 'json' %>
-<input type="hidden" name="test" value="<%=raw @tra.to_json %>" />
-<input type="hidden" name="one" value="<%=@one %>"/>
+
 <!--<p style="margin-top:-12px">-->
 <!--  <em class="link">-->
 <!--    <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">-->
@@ -33,8 +32,8 @@
   <div class="right_box" id="map"></div>
   <div id="save_button">
     <form  id="submitForm" action="/home/index" method="post">
-      <input type="hidden" name="one" value=<%= @one %>  >
-      <input type="hidden" name="position" value=<%= @position %>>
+        <input type="hidden" name="test" value="<%=raw @tra.to_json %>" />
+        <input type="hidden" name="one" value="<%=@one %>"/>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <input type="button" value="저장" onclick="submit1()">
     </form>

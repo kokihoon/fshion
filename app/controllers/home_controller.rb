@@ -28,7 +28,6 @@ class HomeController < ApplicationController
   def index
     @travel = Travel.new
     test = params[:values]
-    @one = params[:one]
     @travel.day1 = test[0]
     @travel.day2 = test[1]
     @travel.day3 = test[2]
@@ -39,6 +38,7 @@ class HomeController < ApplicationController
     @travel.day8 = test[7]
     @travel.user = current_user
     @travel.position = params[:position]
+    @travel.one = params[:one]
     @travel.save
     redirect_to '/home/new'
   end
