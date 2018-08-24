@@ -40,7 +40,7 @@ class HomeController < ApplicationController
     @travel.position = params[:position]
     @travel.one = params[:one]
     @travel.save
-    redirect_to '/home/my+page'
+    redirect_to '/home/my_page'
   end
 
   #Crate
@@ -65,20 +65,20 @@ class HomeController < ApplicationController
     @start = params[:start]
     @end = params[:end]
 
-    @position1 = Attraction.where("category like ?", "%ㄱ%" );
-    @position2 = Attraction.where("category like ?", "%ㄴ%" );
-    @position3 = Attraction.where("category like ?", "%ㄷ%");
-    @position4 = Attraction.where("category like ?", "%ㄹ%");
-    @position5 = Attraction.where("category like ?", "%ㅁ%");
-    @position6 = Attraction.where("category like ?", "%ㅂ%");
-    @position7 = Attraction.where("category like ?", "%ㅅ%");
-    @position8 = Attraction.where("category like ?", "%ㅇ%");
-    @position9 = Attraction.where("category like ?", "%ㅈ%");
-    @position10 = Attraction.where("category like ?", "%ㅊ%");
-    @position11 = Attraction.where("category like ?", "%ㅋ%");
-    @position12 = Attraction.where("category like ?", "%ㅌ%");
-    @position13 = Attraction.where("category like ?", "%ㅍ%");
-    @position14 = Attraction.where("category like ?", "%ㅎ%");
+    @position1 = Attraction.where("category = 'ㄱ' AND position = ?", @position);
+    @position2 = Attraction.where("category = 'ㄴ' AND position = ?", @position);
+    @position3 = Attraction.where("category = 'ㄷ' AND position = ?", @position);
+    @position4 = Attraction.where("category = 'ㄹ' AND position = ?", @position);
+    @position5 = Attraction.where("category = 'ㅁ' AND position = ?", @position);
+    @position6 = Attraction.where("category = 'ㅂ' AND position = ?", @position);
+    @position7 = Attraction.where("category = 'ㅅ' AND position = ?", @position);
+    @position8 = Attraction.where("category = 'ㅇ' AND position = ?", @position);
+    @position9 = Attraction.where("category = 'ㅈ' AND position = ?", @position);
+    @position10 = Attraction.where("category = 'ㅊ' AND position = ?", @position);
+    @position11 = Attraction.where("category = 'ㅋ' AND position = ?", @position);
+    @position12 = Attraction.where("category = 'ㅌ' AND position = ?", @position);
+    @position13 = Attraction.where("category = 'ㅍ' AND position = ?", @position);
+    @position14 = Attraction.where("category = 'ㅎ' AND position = ?", @position);
   end
 
   def detailed_content
