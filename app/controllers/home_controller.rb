@@ -40,7 +40,7 @@ class HomeController < ApplicationController
     @travel.position = params[:position]
     @travel.one = params[:one]
     @travel.save
-    redirect_to '/home/new'
+    redirect_to '/home/my+page'
   end
 
   #Crate
