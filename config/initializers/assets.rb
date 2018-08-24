@@ -11,6 +11,11 @@ Rails.application.config.assets.precompile += %w( my_page.css )
 Rails.application.config.assets.precompile += %w( notes.css )
 Rails.application.config.assets.precompile += %w( notes_new.css )
 Rails.application.config.assets.precompile += %w( notes_show.css )
+Rails.application.config.assets.precompile += %w( devise_new.css )
+Rails.application.config.assets.precompile += %w( devise_password.css )
+Rails.application.config.assets.precompile += %w( devise_signin.css )
+Rails.application.config.assets.precompile += %w( notes_edit.css )
+
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
